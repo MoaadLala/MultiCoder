@@ -1,0 +1,25 @@
+{
+  "name": "multicoder",
+  "version": "1.0.0",
+  "description": "This is a multiplayer coding challenges game",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoaadLala/MultiCoder.git"
+  },
+  "author": "Moaad Lala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MoaadLala/MultiCoder/issues"
+  },
+  "homepage": "https://github.com/MoaadLala/MultiCoder#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.3",
+    "socket.io": "^3.1.0"
+  }
+}

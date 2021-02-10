@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Platform Library -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-27YD56QZ42"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-27YD56QZ42');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The IDE page for playing">
+    <meta property="og:image" content="MultiCoder/MultiCoder.png">
+    <meta name="google-signin-client_id" content="769347756805-8n3nn4i1a7g0c53k6fhhddsjfm1bqbkg.apps.googleusercontent.com">
+    <title>MultiCoder - Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="MultiCoder/MultiCoder.png">
+    <style>
+        .questions {
+            margin-top: 1em;
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-header">
+            <h3>Multi<span class="coder">Coder</span></h3>
+        </div>
+        <div class="nav-tabs">
+            <a href="index.html" id="home">Home</a>
+            <a href="Rules.html">Attack</a>
+            <a href="index.html">About</a>
+        </div>
+    </nav>
+    <main>
+        <section class="questions">
+            <img src="MultiCoder/undraw_programmer_imem.svg" alt="just a boring programmer" class="img">
+            <div class="rules">
+                <h1>Rules:</h1>
+                <p>There's one rule in this arena, no stackoverflow, meaning no copypasiting, got it?
+                    to get started, just enter your name, and then choose you're option.</p>
+                <p>Nearly forgot!.. you want to think carefully about your answer, just saying ((hheh))!</p>
+            </div>
+            <div class="choices">
+                <input type="text" id="userName" name="username">
+                <input type="submit" id="userNameSubmitButton" class="sendButton" value="Enter">
+                <div class="code-chunk" id="nameChunk">
+                    <center>
+                        <div id="my-signin2"></div>
+                    </center>
+                </div>
+                <button id="joinBtn" class="btns">Join a room</button>
+                <button id="createBtn" class="btns"> create a room</button>
+            </div>
+            <div class="code-chunk" id="joinChunk">
+                <input type="text" autocomplete="off" id="codeInput" class="inputForm" placeholder="Enter the code here" maxlength="5">
+                <input type="submit" id="submitBtn" class="sendButton" value="Join">
+            </div>
+            <button id="back" class="btns">Back</button>
+        </section>
+        <section class="coding">
+            <div class="code-chunk" id="createChunk">
+                <h3>You're code: <span id="code"></span></h3>
+            </div>
+            <button id="image"></button>
+            <button class="message"></button>
+            <button id="timer">0</button>
+            <button id="lines">Lines: <span id="numOfLines">0</span></button>
+            <div class="rightSide">
+                <div class="tabs">
+                    <button class="tablinks" id="theConsole">Console  </button>
+                    <button class="tablinks active" id="theQuestion">Question</button>
+                </div>
+                <div id="theconsole"></div>
+                <div id="thequestion">
+                    <span id='title'></span>Made by: <span id="by"></span><br>
+                    <div id="Question"></div><br>
+                </div>
+            </div>
+            <div class="ide" id="ide"></div>
+            <div class="success">
+                <div class="successWindow">
+                    <h2><img src="MultiCoder/undraw_a_whole_year_vnfm.svg"><br>You solution worked, am suprised!</h2>You're time score: <spna id="seconds"></spna>
+                </div>
+            </div>
+            <div class="failure">
+                <div class="failureWindow">
+                    <h3><img src="MultiCoder/undraw_cancel_u1it.svg" width="280px" height="240px"><br>You are an idiot :< </h3>
+                </div>
+            </div>
+            <button id="submit">Submit</button>
+            <button id="reset">Reset</button>
+        </section>
+        <section id="result">
+            <div class="main-text">
+                <h1>Results</h1>
+            </div>
+            <section class="questions">
+                <table id="resultTable">
+                    <tr>
+                        <th><h1>Username</h1></th>
+                        <th><h1>TimeScore</h1></th>
+                    </tr>
+                </table>
+                <button class="btns" id="reloadBtn">Another Game?</button>
+            </section>
+        </section>
+    </main>
+    <footer>
+        <h3>Copyright&copy; 2020</h3>
+        <h4>Made By: Moaad Lala</h4>
+        <a href="https://web.facebook.com/MultiCoder2020/"><img src="MultiCoder/facebook-48.png" alt="facebook logo"></a>
+        <a href="https://www.instagram.com/_.multicoder._/"><img src="MultiCoder/instagram-48.png" alt="instagram logo"></a>
+        <a href="https://twitter.com/MultiCoder"><img src="MultiCoder/twitter-48.png" alt="twitter logo"></a>
+    </footer>
+
+    <script src="https://pagecdn.io/lib/ace/1.4.12/ace.js" crossorigin="anonymous" integrity="sha256-Q9hnBpgBFstzZOr+OKFOWZWfcF5nFXO8Qz48Nmndo6U=" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.0/socket.io.js" integrity="sha512-+l9L4lMTFNy3dEglQpprf7jQBhQsQ3/WvOnjaN/+/L4i0jOstgScV0q2TjfvRF4V+ZePMDuZYIQtg5T4MKr+MQ==" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <script src="script.js"></script>
+    <script src="editor.js"></script>
+</body>
+</html>
