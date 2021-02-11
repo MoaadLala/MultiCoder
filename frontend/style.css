@@ -53,6 +53,10 @@ body {
     display: none;
 }
 
+#home {
+    cursor: pointer;
+}
+
 .fadingIn {
     animation: fadingIn .5s;
     animation-iteration-count: 1;
