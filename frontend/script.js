@@ -31,8 +31,6 @@ socket.on('startingGameData', (data) => {
 });
 
 //DOM manipulating
-const onHome = document.getElementById('onHome');
-const home = document.getElementById('home');
 const joinBtn = document.getElementById('joinBtn');
 const createBtn = document.getElementById('createBtn');
 const joinChunk = document.getElementById('joinChunk');
@@ -112,19 +110,6 @@ back.addEventListener('click', () => {
         createBtn.classList.remove('fadingIn');
         createChunk.classList.remove('fadingOut');
     }, 300);
-});
-
-home.addEventListener('click', function() {
-    onHome.style.display = 'block';
-    onHome.classList.add('fadingIn');
-    setTimeout(function() {
-        onHome.classList.remove('fadingIn');
-        onHome.classList.add('fadingOut');
-    }, 3000);
-    setTimeout(function() {
-        onHome.style.display = 'none';
-        onHome.classList.remove('fadingOut');
-    }, 3500);
 });
 
 theConsole.addEventListener('click', () => {

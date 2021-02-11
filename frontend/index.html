@@ -24,7 +24,7 @@
             <h3>Multi<span class="coder">Coder</span></h3>
         </div>
         <div class="nav-tabs">
-            <a href="#home" id="home">Home</a>
+            <a id="home">Home</a>
             <a href="Rules.html">Attack</a>
             <a href="#about">About</a>
         </div>
@@ -73,6 +73,21 @@
         <a href="https://www.instagram.com/_.multicoder._/"><img src="MultiCoder/instagram-48.png" alt="instagram logo"></a>
         <a href="https://twitter.com/MultiCoder"><img src="MultiCoder/twitter-48.png" alt="twitter logo"></a>
     </footer>
-    <script src="script.js"></script>
+    <script>
+        const onHome = document.getElementById('onHome');
+        const home = document.getElementById('home');
+        home.addEventListener('click', function() {
+            onHome.style.display = 'block';
+            onHome.classList.add('fadingIn');
+            setTimeout(function() {
+                onHome.classList.remove('fadingIn');
+                onHome.classList.add('fadingOut');
+            }, 3000);
+            setTimeout(function() {
+                onHome.style.display = 'none';
+                onHome.classList.remove('fadingOut');
+            }, 3500);
+        });
+    </script>
 </body>
 </html>
