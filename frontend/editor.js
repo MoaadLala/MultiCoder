@@ -76,7 +76,7 @@ submit.addEventListener('click', () => {
     if(theconsole.innerText == answer) {
         failure.style.display = 'none';
         success.style.display = 'block';
-        socket.emit('winnerAmountOfSeconds', amountOfSeconds);
+        socket.emit('winnerAmountOfSeconds', [amountOfSeconds, userImage]);
         setTimeout(() => {
             codingSection.style.display = 'none';
             codingSection.classList.add('fadingOut');

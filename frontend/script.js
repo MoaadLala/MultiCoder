@@ -167,5 +167,5 @@ function renderButton() {
 socket.on('finalResult', (data) => {
     let usersArray = Object.keys(data);
     let timeScoreArray = Object.values(data);
-    resultTable.innerHTML += `<tr><td>${usersArray[usersArray.length - 1]}</td><td>${timeScoreArray[timeScoreArray.length - 1]}</td></tr>`;
+    resultTable.innerHTML += `<tr><td><img src="${timeScoreArray[timeScoreArray.length - 1][1]}" class="playerImage">${usersArray[usersArray.length - 1]}</td><td>${timeScoreArray[timeScoreArray.length - 1][0]}</td></tr>`;
 });

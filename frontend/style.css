@@ -254,6 +254,12 @@ footer a img {
     border-radius: 50%;
 }
 
+.playerImage {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px !important;
+}
+
 .ide {
     grid-row: 3/8;
     grid-column: 1/13;
