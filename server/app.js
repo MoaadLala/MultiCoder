@@ -79,6 +79,22 @@ io.on('connection', (socket) => {
     socket.on('loserAmountOfSeconds', (data) => {
         socket.broadcast.to(rooms[socket.id]).emit('loserSeconds', data);
     });
+    socket.on('reqNewQ', () => {
+        mongoClient.connect(connectionUrl, {useNewUrlParser:true}, (error, client) => {
+            if(error){
+                return console.log('unable to connect to db');
+            }
+            const db = client.db('MultiCoder');
+            db.collection('questions').findOne(
+                {
+                    "_id": getRandomInt(1, 22)
+                }, (err, question) => {
+                    if(err) return console.log('unable to fetch');
+                    io.to(rooms[socket.id]).emit('startingGameData', question);
+                }
+            );
+        });
+    });
 });
 
 server.listen(port, () => {

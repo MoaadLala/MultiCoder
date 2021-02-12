@@ -82,6 +82,7 @@ submit.addEventListener('click', () => {
             codingSection.classList.add('fadingOut');
             resultSection.style.display = 'block';
             resultSection.classList.add('fadingIn');
+            success.style.display = 'none';
         }, 3000);
     }else{
         socket.emit('loserAmountOfSeconds', amountOfSeconds);

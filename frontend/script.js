@@ -8,6 +8,7 @@ let answer;
 let defaultValue;
 let user;
 let userImage;
+let questionObj;
 
 submitBtn.addEventListener('click', () => {
     const value = codeInput.value.toUpperCase();
@@ -16,10 +17,18 @@ submitBtn.addEventListener('click', () => {
     socket.emit('gameStarted');
     code.innerText = value;
     questionsSection.style.display = 'none';
+    questionsSection.classList.add('fadingOut');
     codingSection.style.display = 'grid';
+    codingSection.classList.add('fadingIn');
+    setTimeout(() => {
+        questionsSection.classList.remove('fadingOut');
+        codingSection.classList.remove('fadingIn');
+    }, 500)
 });
 
+//getting the question
 socket.on('startingGameData', (data) => {
+    questionObj = data;
     document.getElementById('title').innerText = data.name;
     document.getElementById('by').innerText = data.by;
     document.getElementById('Question').innerHTML = data.description;
@@ -54,6 +63,8 @@ const userNameSubmitButton = document.getElementById('userNameSubmitButton');
 const resultSection = document.getElementById('result');
 const reloadBtn = document.getElementById('reloadBtn');
 const image = document.getElementById('image');
+const review = document.getElementById('review');
+const resultsBtn = document.getElementById('results');
 
 userNameSubmitButton.addEventListener('click', () => {
     joinBtn.classList.remove('fadingIn');
@@ -87,7 +98,13 @@ joinBtn.addEventListener('click', () => {
 
 createBtn.addEventListener('click', () => {
     questionsSection.style.display = 'none';
+    questionsSection.classList.add('fadingOut');
     codingSection.style.display = 'grid';
+    codingSection.classList.add('fadingIn');
+    setTimeout(() => {
+        questionsSection.classList.remove('fadingOut');
+        codingSection.classList.remove('fadingIn');
+    }, 500)
     //server stuff
     socket.emit('createARoom', id);
     socket.emit('gameStarted');
@@ -109,7 +126,7 @@ back.addEventListener('click', () => {
         joinBtn.classList.remove('fadingIn');
         createBtn.classList.remove('fadingIn');
         createChunk.classList.remove('fadingOut');
-    }, 300);
+    }, 500);
 });
 
 theConsole.addEventListener('click', () => {
@@ -126,9 +143,49 @@ theQuestion.addEventListener('click', () => {
     thequestion.style.display = 'block';
 });
 
-reloadBtn.addEventListener('click', () => {
-    window.location.reload();
+review.addEventListener('click', () => {
+    getBackToIDE();
+    editor.setReadOnly(true);
+    submit.style.display = 'none';
+    reset.style.display = 'none';
+    resultsBtn.style.display = 'block';
 });
+
+reloadBtn.addEventListener('click', () => {
+    socket.emit('reqNewQ');
+    getBackToIDE();
+    resultsBtn.style.display = 'none';
+    reset.style.display = 'block';
+    submit.style.display = 'block';
+    resultTable.innerHTML = '<tr><th><h1>Username</h1></th><th><h1>TimeScore</h1></th></tr>';
+    editor.setReadOnly(false);
+});
+
+resultsBtn.addEventListener('click', () => {
+    codingSection.classList.add('fadingOut');
+    resultSection.classList.add('fadingIn');
+    setTimeout(() => {
+        codingSection.style.display = 'none';
+        resultSection.style.display = 'block';
+    }, 500);
+});
+
+function getBackToIDE() {
+    codingSection.classList.remove('fadingOut');
+    resultSection.classList.remove('fadingIn');
+    codingSection.classList.add('fadingIn');
+    resultSection.classList.add('fadingOut');
+    setTimeout(() => {
+        codingSection.classList.remove('fadingIn');
+        resultSection.classList.remove('fadingOut');
+    }, 500)
+    resultSection.style.display = 'none';
+    codingSection.style.display = 'grid';
+    theQuestion.classList.add('active');
+    theConsole.classList.remove('active');
+    thequestion.style.display = 'block';
+    theconsole.style.display = 'none';
+}
 
 function makeid(length) {
     var result = '';
@@ -169,3 +226,15 @@ socket.on('finalResult', (data) => {
     let timeScoreArray = Object.values(data);
     resultTable.innerHTML += `<tr><td><img src="${timeScoreArray[timeScoreArray.length - 1][1]}" class="playerImage">${usersArray[usersArray.length - 1]}</td><td>${timeScoreArray[timeScoreArray.length - 1][0]}</td></tr>`;
 });
+
+//for deleting elements
+Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(var i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+}

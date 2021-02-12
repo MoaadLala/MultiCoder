@@ -320,7 +320,7 @@ footer a img {
     background-color: #303133;
 }
 
-#submit {
+#results {
     grid-row: 12/13;
     grid-column: 11/13;
     background-color: #B11E1E;
@@ -329,6 +329,12 @@ footer a img {
     border: none;
     outline: none;
     transition: .3s;
+    display: none;
+}
+
+#results:hover {
+    background-color: #eeeeee;
+    color: #B11E1E;
 }
 
 #userName {
@@ -341,6 +347,17 @@ footer a img {
 
 #nameChunk {
     background-color: inherit;
+}
+
+#submit {
+    grid-row: 12/13;
+    grid-column: 11/13;
+    background-color: #B11E1E;
+    color: inherit;
+    font-family: inherit;
+    border: none;
+    outline: none;
+    transition: .3s;
 }
 
 #reset {
