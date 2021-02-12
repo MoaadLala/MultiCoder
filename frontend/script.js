@@ -159,6 +159,8 @@ reloadBtn.addEventListener('click', () => {
     submit.style.display = 'block';
     resultTable.innerHTML = '<tr><th><h1>Username</h1></th><th><h1>TimeScore</h1></th></tr>';
     editor.setReadOnly(false);
+    timer.innerHTML = 0;
+    startingTimer();
 });
 
 resultsBtn.addEventListener('click', () => {
