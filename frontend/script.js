@@ -65,6 +65,9 @@ const reloadBtn = document.getElementById('reloadBtn');
 const image = document.getElementById('image');
 const review = document.getElementById('review');
 const resultsBtn = document.getElementById('results');
+const startBtn = document.getElementById('start');
+const lines = document.getElementById('lines');
+const IDE = document.getElementById('ide');
 
 userNameSubmitButton.addEventListener('click', () => {
     joinBtn.classList.remove('fadingIn');
@@ -160,7 +163,12 @@ reloadBtn.addEventListener('click', () => {
     resultTable.innerHTML = '<tr><th><h1>Username</h1></th><th><h1>TimeScore</h1></th></tr>';
     editor.setReadOnly(false);
     timer.innerHTML = 0;
-    startingTimer();
+    startBtn.style.display = 'block';
+    submit.style.display = 'none';
+    reset.style.display = 'none';
+    timer.style.filter = 'blur(4px)';
+    lines.style.filter = 'blur(4px)';
+    IDE.style.filter = 'blur(4px)';
 });
 
 resultsBtn.addEventListener('click', () => {
@@ -169,6 +177,30 @@ resultsBtn.addEventListener('click', () => {
     setTimeout(() => {
         codingSection.style.display = 'none';
         resultSection.style.display = 'block';
+    }, 500);
+});
+
+startBtn.addEventListener('click', () => {
+    startingTimer();
+    timer.classList.add('blurOut');
+    lines.classList.add('blurOut');
+    IDE.classList.add('blurOut');
+    startBtn.style.display = 'none';
+    startBtn.classList.add('fadingOut');
+    submit.style.display = 'block';
+    submit.classList.add('fadingIn');
+    reset.style.display = 'block';
+    reset.classList.add('fadingIn');
+    setTimeout(() => {
+        timer.classList.remove('blurOut');
+        timer.style.filter = 'blur(0)';
+        lines.classList.remove('blurOut');
+        lines.style.filter = 'blur(0)';
+        IDE.classList.remove('blurOut');
+        IDE.style.filter = 'blur(0)';
+        startBtn.classList.remove('fadingOut');
+        submit.classList.remove('fadingIn');
+        reset.classList.remove('fadingIn');
     }, 500);
 });
 

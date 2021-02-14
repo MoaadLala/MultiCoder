@@ -102,7 +102,6 @@ reset.addEventListener('click', () => {
     editor.setValue(defaultValue);
     //clearing the console
     clearConsoleScreen();
-    timer.innerHTML = 0;
 });
 
 //creating the console
@@ -199,7 +198,6 @@ function startingTimer() {
         document.getElementById('seconds').innerText = timer.innerHTML;
     }, 1000);
 }
-startingTimer();
 
 //preventing the editor from pasting
 editor.onPaste = function() { return ""; }

@@ -230,6 +230,11 @@ footer a img {
     color: inherit;
     font-family: inherit;
     outline: none;
+    filter: blur(4px);
+}
+
+.blurOut {
+    animation: blurOut .5s;
 }
 
 #lines {
@@ -240,6 +245,7 @@ footer a img {
     color: inherit;
     font-family: inherit;
     outline: none;
+    filter: blur(4px);
 }
 
 #image {
@@ -266,6 +272,7 @@ footer a img {
     background-color: #303133;
     font-size: 1em;
     z-index: 0;
+    filter: blur(4px);
 }
 
 .success {
@@ -358,12 +365,25 @@ footer a img {
     border: none;
     outline: none;
     transition: .3s;
+    display: none;
 }
 
 #reset {
     grid-row: 12/13;
     grid-column: 9/11;
     background-color: #303133;
+    color: inherit;
+    font-family: inherit;
+    border: none;
+    outline: none;
+    transition: .3s;
+    display: none;
+}
+
+#start {
+    grid-row: 12/13;
+    grid-column: 11/13;
+    background-color: #B11E1E;
     color: inherit;
     font-family: inherit;
     border: none;
@@ -379,6 +399,11 @@ footer a img {
 #reset:hover {
     background-color: #eeeeee;
     color: #303133;
+}
+
+#start:hover {
+    background-color: #eeeeee;
+    color: #B11E1E;
 }
 
 .tabs {
@@ -665,6 +690,16 @@ table th {
 
     100% {
         opacity: 0;
+    }
+}
+
+@keyframes blurOut {
+    0% {
+        fliter: blur(4px);
+    }
+
+    100% {
+        filter: blur(0px);
     }
 }
 
